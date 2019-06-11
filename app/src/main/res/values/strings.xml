@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Marple</string>
+
+    <!--Restrictions -->
+    <string name="restriction_activity">Restrições</string>
+    <string name="new_restriction_activity">Nova restrição</string>
+    <string name="edit_restriction_activity">Editar restrição</string>
+
+    <!--ingredient -->
+    <string name="ingredient_activity">Ingredientes</string>
+
+    <!--tab view -->
+    <string name="produtos_todos">Todos</string>
+    <string name="produtos_permitidos">Permitidos</string>
+    <string name="produtos_nao_permitidos">Não permitidos</string>
+
+    <!--menu -->
+    <string name="menu_products">Produtos</string>
+    <string name="menu_restrictions">Restrições</string>
+
+    <!--fields -->
+    <string name="text_name">Nome: </string>
+    <string name="text_hint">Nome da restrição </string>
+    <string name="text_description">Descrição: </string>
+</resources>
