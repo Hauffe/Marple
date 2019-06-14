@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,6 +42,7 @@ public class RestrictionsAdapter extends RecyclerView.Adapter<RestrictionsAdapte
 
         restrictionHolder.restriction_name.setText(restriction.getName());
         restrictionHolder.restriction_description.setText(restriction.getIngredients().toString());
+        restrictionHolder.position = position;
     }
 
     @Override
@@ -52,6 +54,8 @@ public class RestrictionsAdapter extends RecyclerView.Adapter<RestrictionsAdapte
 
         TextView restriction_name;
         TextView restriction_description;
+        ImageButton delete_restriction;
+        Integer position;
 
         public RestrictionHolder(@NonNull View itemView) {
             super(itemView);
@@ -59,6 +63,22 @@ public class RestrictionsAdapter extends RecyclerView.Adapter<RestrictionsAdapte
             restriction_name = itemView.findViewById(R.id.restriction_name);
             restriction_description = itemView.findViewById(R.id.restriction_description);
 
+            delete_restriction = itemView.findViewById(R.id.delete_restriction);
+
+            delete_restriction.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Restriction restriction = RestrictionBC.sharedInstance().getRestrictionByName(restriction_name.getText().toString());
+                    RestrictionBC.sharedInstance().deleteRestriction(restriction);
+                    restrictions.remove(restriction);
+
+                    Toast.makeText(RestrictionsAdapter.this.context,
+                            Constants.ITEM_DELETED + restriction.getName(),
+                            Toast.LENGTH_LONG).show();
+
+                    notifyItemRemoved(position);
+                }
+            });
         }
     }
 }

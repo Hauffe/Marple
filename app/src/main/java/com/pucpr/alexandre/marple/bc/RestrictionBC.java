@@ -1,7 +1,6 @@
 package com.pucpr.alexandre.marple.bc;
 
 import android.content.Context;
-import android.widget.Toast;
 
 import com.pucpr.alexandre.marple.entity.Ingredient;
 import com.pucpr.alexandre.marple.entity.Restriction;
@@ -56,8 +55,7 @@ public class RestrictionBC {
     private void updateRestrictionsList(){
         restrictions = db.restrictionDAO().getAll();
         for(Restriction restriction : restrictions){
-            restrictions
-                    .get(restriction.getId().intValue()-1)
+            restriction
                     .setIngredients(db.restrictionWithIngredientsDAO()
                             .getIngredientsForRestrictions(restriction.getId())
                     );
@@ -68,15 +66,17 @@ public class RestrictionBC {
             db.restrictionDAO().insertAll(restriction);
             restriction.setId(db.restrictionDAO().findByName(restriction.getName()).getId());
             for(Ingredient ingredient: restriction.getIngredients()){
-                db.restrictionWithIngredientsDAO().insert(new RestrictionWithIngredients(restriction.getId(), ingredient.getId()));
+                db.restrictionWithIngredientsDAO()
+                        .insert(new RestrictionWithIngredients(restriction.getId(), ingredient.getId()));
             }
 
     }
 
     public void deleteRestriction(Restriction restriction){
-        db.restrictionDAO().findByName(restriction.getName());
         for(Ingredient ingredient: restriction.getIngredients()){
-            db.restrictionWithIngredientsDAO().delete(new RestrictionWithIngredients(restriction.getId(), ingredient.getId()));
+            db.restrictionWithIngredientsDAO()
+                    .delete(new RestrictionWithIngredients(restriction.getId(), ingredient.getId()));
         }
+        db.restrictionDAO().delete(restriction);
     }
 }

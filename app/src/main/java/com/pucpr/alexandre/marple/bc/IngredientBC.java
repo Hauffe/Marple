@@ -32,16 +32,20 @@ public class IngredientBC {
 
         this.context = context;
         db = AppDatabase.getInstance(context);
-        db.ingredientDAO().clean();
-        db.ingredientDAO().insertAll(new Ingredient("Ingrediente 1", "Um ingrediente aí"));
-        db.ingredientDAO().insertAll(new Ingredient("Ingrediente 2", "Um ingrediente aí"));
-        db.ingredientDAO().insertAll(new Ingredient("Ingrediente 3", "Um ingrediente aí"));
-        db.ingredientDAO().insertAll(new Ingredient("Ingrediente 4", "Um ingrediente aí"));
-        db.ingredientDAO().insertAll(new Ingredient("Ingrediente 5", "Um ingrediente aí"));
-        db.ingredientDAO().insertAll(new Ingredient("Ingrediente 6", "Um ingrediente aí"));
+        verifyDatabase();
 
+    }
+
+    private void verifyDatabase() {
         ingredients = db.ingredientDAO().getAll();
-
+        if(ingredients.isEmpty()){
+            db.ingredientDAO().insertAll(new Ingredient("Ingrediente 1", "Um ingrediente aí"));
+            db.ingredientDAO().insertAll(new Ingredient("Ingrediente 2", "Um ingrediente aí"));
+            db.ingredientDAO().insertAll(new Ingredient("Ingrediente 3", "Um ingrediente aí"));
+            db.ingredientDAO().insertAll(new Ingredient("Ingrediente 4", "Um ingrediente aí"));
+            db.ingredientDAO().insertAll(new Ingredient("Ingrediente 5", "Um ingrediente aí"));
+            db.ingredientDAO().insertAll(new Ingredient("Ingrediente 6", "Um ingrediente aí"));
+        }
     }
 
     public List<Ingredient> getIngredients() {
@@ -57,4 +61,5 @@ public class IngredientBC {
         }
         return found_ingredient;
     }
+
 }
