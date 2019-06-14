@@ -1,7 +1,10 @@
 package com.pucpr.alexandre.marple.bc;
 
+import android.content.Context;
+
 import com.pucpr.alexandre.marple.controller.AddRestrictionActivity;
 import com.pucpr.alexandre.marple.entity.Ingredient;
+import com.pucpr.alexandre.marple.entity.Restriction;
 import com.pucpr.alexandre.marple.persistence.db.AppDatabase;
 
 import java.util.List;
@@ -11,7 +14,7 @@ public class IngredientBC {
 
     private List<Ingredient> ingredients;
     private AppDatabase db;
-    private AddRestrictionActivity context;
+    private Context context;
 
     public IngredientBC() {
 
@@ -25,7 +28,7 @@ public class IngredientBC {
         return instance;
     }
 
-    public void setContext(AddRestrictionActivity context) {
+    public void setContext(Context context) {
 
         this.context = context;
         db = AppDatabase.getInstance(context);
@@ -45,7 +48,13 @@ public class IngredientBC {
         return ingredients;
     }
 
-
-
-
+    public Ingredient getIngredientByName(String name) {
+        Ingredient found_ingredient = new Ingredient();
+        for(Ingredient ingredient : ingredients){
+            if (ingredient.getName().compareToIgnoreCase(name) == 0 ){
+                found_ingredient = ingredient;
+            }
+        }
+        return found_ingredient;
+    }
 }
