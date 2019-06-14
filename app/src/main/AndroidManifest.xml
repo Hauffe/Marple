@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".controller.MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,12 +17,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".controller.RestrictionActivity"
+            android:name=".activities.RestrictionActivity"
             android:label="@string/restriction_activity"
-            android:parentActivityName=".controller.MainActivity" />
-        <activity android:name=".controller.AddRestrictionActivity"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity android:name=".activities.AddRestrictionActivity"
             android:label="@string/new_restriction_activity"
-            android:parentActivityName=".controller.RestrictionActivity" ></activity>
+            android:parentActivityName=".activities.RestrictionActivity" ></activity>
     </application>
 
 </manifest>

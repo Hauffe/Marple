@@ -1,4 +1,4 @@
-package com.pucpr.alexandre.marple.view;
+package com.pucpr.alexandre.marple.activities.adapters;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

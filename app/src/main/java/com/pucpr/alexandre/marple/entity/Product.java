@@ -2,29 +2,39 @@ package com.pucpr.alexandre.marple.entity;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
-import android.arch.persistence.room.Relation;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Products {
+@Entity(tableName = "product")
+public class Product {
 
+    @PrimaryKey(autoGenerate = true)
     private Long id;
 
+    @ColumnInfo(name = "name")
     private String name;
 
+    @Ignore
     private List<Ingredient> ingredients;
 
-    public Products(Long id, String name) {
+
+    public Product(Long id, String name) {
         this.id = id;
         this.name = name;
         ingredients = new ArrayList<>();
     }
 
-    public Products(String name) {
+    @Ignore
+    public Product(String name) {
         this.name = name;
         ingredients = new ArrayList<>();
+    }
+
+    @Ignore
+    public Product() {
     }
 
     public Long getId() {

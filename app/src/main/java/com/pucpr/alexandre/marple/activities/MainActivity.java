@@ -1,4 +1,4 @@
-package com.pucpr.alexandre.marple.controller;
+package com.pucpr.alexandre.marple.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

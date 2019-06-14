@@ -1,4 +1,4 @@
-package com.pucpr.alexandre.marple.controller;
+package com.pucpr.alexandre.marple.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -11,10 +11,8 @@ import android.widget.EditText;
 import com.pucpr.alexandre.marple.R;
 import com.pucpr.alexandre.marple.bc.IngredientBC;
 import com.pucpr.alexandre.marple.bc.RestrictionBC;
-import com.pucpr.alexandre.marple.entity.Ingredient;
 import com.pucpr.alexandre.marple.entity.Restriction;
-import com.pucpr.alexandre.marple.persistence.RestrictionWithIngredientsDAO;
-import com.pucpr.alexandre.marple.view.IngredientsAdapter;
+import com.pucpr.alexandre.marple.activities.adapters.IngredientsAdapter;
 
 public class AddRestrictionActivity extends AppCompatActivity {
 

@@ -2,9 +2,7 @@ package com.pucpr.alexandre.marple.bc;
 
 import android.content.Context;
 
-import com.pucpr.alexandre.marple.controller.AddRestrictionActivity;
 import com.pucpr.alexandre.marple.entity.Ingredient;
-import com.pucpr.alexandre.marple.entity.Restriction;
 import com.pucpr.alexandre.marple.persistence.db.AppDatabase;
 
 import java.util.List;
