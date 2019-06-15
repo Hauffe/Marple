@@ -7,6 +7,7 @@ import com.pucpr.alexandre.marple.entity.Restriction;
 import com.pucpr.alexandre.marple.entity.RestrictionWithIngredients;
 import com.pucpr.alexandre.marple.persistence.db.AppDatabase;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestrictionBC {
@@ -50,6 +51,17 @@ public class RestrictionBC {
             }
         }
         return found_restriction;
+    }
+
+    public List<Ingredient> getAllIngredientsFromRestrictions(){
+        List<Ingredient> ingredients = new ArrayList<>();
+        updateRestrictionsList();
+        if(!restrictions.isEmpty()) {
+            for (Restriction restriction : restrictions) {
+                ingredients.addAll(restriction.getIngredients());
+            }
+        }
+        return ingredients;
     }
 
     private void updateRestrictionsList(){

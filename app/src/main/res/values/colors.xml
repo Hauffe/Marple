@@ -5,6 +5,7 @@
     <color name="colorAccent">#3a8603</color>
     <color name="headerColor">#ffffff</color>
     <color name="tabIndicatorColor">#ffff8d</color>
+    <color name="notAllowedProduct">#be9c9a</color>
 
     <color name="List_color">#4b4b4b</color>
 </resources>
